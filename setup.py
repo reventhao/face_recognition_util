@@ -13,10 +13,10 @@ from setuptools import setup
 
 setup(
     name="face_recognition_util",
-    version="0.0.8",
+    version="0.1.0",
     keywords=("face_recognition_util"),
-    description="time and path tool",
-    long_description="time and path tool",
+    description="face recognition tools",
+    long_description="Provide Base64 transcoding,Picture zoom,Face comparison,and real-time comparison",
     license="MIT Licence",
 
     url="https://github.com/reventhao/face_recognition_util",

@@ -1,11 +1,11 @@
 Metadata-Version: 1.0
 Name: face-recognition-util
-Version: 0.0.8
-Summary: time and path tool
+Version: 0.1.0
+Summary: face recognition tools
 Home-page: https://github.com/reventhao/face_recognition_util
 Author: reventhao
 Author-email: ren895873@gmail.com
 License: MIT Licence
-Description: time and path tool
+Description: Provide Base64 transcoding,Picture zoom,Face comparison,and real-time comparison
 Keywords: face_recognition_util
 Platform: any

@@ -15,9 +15,9 @@ class FaceNotFoundException(Exception):
 # base64转opencv图片
 def convert_to_image(base64_code):
     """
-    base64转换图片
-    :参数 base64_code 需要转换为opencv图片格式的base64编码
-    :返回值: 转换完成的opencv2格式图片
+    base64转图片
+    :param base64_code:需要转换的base64码:
+    :return image:openCv格式图片:
     """
     # base64解码
     b64image = base64.b64decode(base64_code)
@@ -34,10 +34,10 @@ def convert_to_image(base64_code):
 # 缩放图片
 def resize_image(image, multiple=1.0):
     """
-    缩放图片加快识别
-    :参数1 image 需要缩放的图片
-    :参数2 fsize 缩放倍数,默认值为1，基准120大小等比缩放
-    :返回值: 缩放完成的opencv2格式图片
+    缩放图片
+    :param image:需要缩放的图片:
+    :param multiple:可选缩放倍数,默认120大小基准缩放:
+    :return:
     """
     # 默认以基准120大小等比例缩小
     base_height = 120
@@ -52,27 +52,28 @@ def resize_image(image, multiple=1.0):
 # 获取单个人脸128特征点向量
 def get_face_encoding(face_image):
     """
-    获取图片中单个人脸128特征点向量
-    :参数 face_image 需要获取特征点向量图片
-    :返回值: 特征点向量
+    获取人脸特征点向量
+    :param face_image: 已知人脸图片:
+    :return face_encoding:人脸特征点向量:
     """
     face_encoding = face_recognition.face_encodings(face_image)[0]
     return face_encoding
 
 
 # 人脸比对
-def contrast_faces(known_image, unknown_image):
+def contrast_faces(known_image, unknown_image, tolerance=0.4):
     """
-    人脸对比
-    :参数1 known_image:已知人脸图片
-    :参数2 unknown_image:未知人脸图片
-    :返回值: 比对结果
+    人脸比对
+    :param known_image: 已知图片:
+    :param unknown_image: 待检测图片:
+    :param tolerance: 检测基准,数值越小结果越精确,同时可能出现比对失败:
+    :return result:检测结果:
     """
     # noinspection PyBroadException
     try:
         known_image_encoding = face_recognition.face_encodings(resize_image(known_image))[0]
         unknown_image_encoding = face_recognition.face_encodings(resize_image(unknown_image))[0]
-        result = face_recognition.compare_faces([known_image_encoding], unknown_image_encoding, 0.4)
+        result = face_recognition.compare_faces([known_image_encoding], unknown_image_encoding, tolerance)
         return result[0]
     except IndexError:
         return "nf"
@@ -82,11 +83,13 @@ def contrast_faces(known_image, unknown_image):
 
 
 # 摄像头实时比对
-def real_time_comparison(known_face_encodings, known_face_names):
+def real_time_comparison(known_face_encodings, known_face_names, tolerance=0.4):
     """
-    开启摄像头实时比对
-    :参数1 known_face_encodings:已知多个人脸128特征点向量数组
-    :参数2 known_face_names:已知多个人脸对应名称
+    人脸实时比对
+    :param known_face_encodings:已知人脸特征点向量数组:
+    :param known_face_names:已知人脸名称:
+    :param tolerance:检测基准,数值越小结果越精确,同时可能出现比对失败:
+    :return None:无返回值:
     """
     process_this_frame = True
     face_locations = ""
@@ -107,7 +110,7 @@ def real_time_comparison(known_face_encodings, known_face_names):
 
             face_names = []
             for face_encoding in face_encodings:
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, 0.4)
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance)
                 name = "Unknown"
 
                 if True in matches:
