@@ -1,6 +1,0 @@
-2018-10-15 11:05:28,027 - FaceUtil.py[line:35] - INFO: decoding success,return the result_image
-2018-10-15 11:05:28,028 - FaceUtil.py[line:35] - INFO: decoding success,return the result_image
-2018-10-15 11:05:29,202 - FaceUtil.py[line:81] - INFO: contrast faces success,return a bool value
-2018-10-15 11:05:36,964 - FaceUtil.py[line:35] - INFO: decoding success,return the result_image
-2018-10-15 11:05:36,965 - FaceUtil.py[line:35] - INFO: decoding success,return the result_image
-2018-10-15 11:05:37,029 - FaceUtil.py[line:81] - INFO: contrast faces success,return a bool value

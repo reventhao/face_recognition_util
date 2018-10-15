@@ -3,9 +3,9 @@
 
 #############################################
 # File Name: setup.py
-# Author: mage
-# Mail: mage@woodcol.com
-# Created Time:  2018-1-23 19:17:34
+# Author: reventhao
+# Mail: ren895873@gmail.com
+# Created Time:  2018-10-15 11:47:34
 #############################################
 
 
@@ -13,7 +13,7 @@ from setuptools import setup
 
 setup(
     name="face_recognition_util",
-    version="0.0.5",
+    version="0.0.8",
     keywords=("face_recognition_util"),
     description="time and path tool",
     long_description="time and path tool",
