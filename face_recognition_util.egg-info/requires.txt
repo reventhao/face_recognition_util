@@ -1,0 +1,6 @@
+numpy
+dlib
+gevent
+flask
+opencv-python
+face_recognition

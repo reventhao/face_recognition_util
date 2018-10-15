@@ -1,0 +1,13 @@
+基于dlib的人脸识别工具,使用face_recognition构建的人脸识别工具集
+
+pip安装
+pip3 install face_recognition_util
+
+首次安装需要附加依赖环境
+
+numpy,
+dlib(安装报错,请自行编译并安装dlib,可能用到的工具:cmake),
+gevent(非必须,构建flask web应用),
+flask(非必须,构建falsk web应用),
+opencv-python,
+face_recognition

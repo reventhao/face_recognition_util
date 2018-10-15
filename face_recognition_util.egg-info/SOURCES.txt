@@ -1,0 +1,9 @@
+README
+setup.py
+face_recognition_util/FaceUtil.py
+face_recognition_util/__init__.py
+face_recognition_util.egg-info/PKG-INFO
+face_recognition_util.egg-info/SOURCES.txt
+face_recognition_util.egg-info/dependency_links.txt
+face_recognition_util.egg-info/requires.txt
+face_recognition_util.egg-info/top_level.txt
