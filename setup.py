@@ -29,5 +29,5 @@ setup(
     package_dir={'face_recognition_util': 'face_recognition_util'},
     include_package_data=True,
     platforms="any",
-    install_requires=["numpy", "dlib", "gevent", "flask", "opencv-python", "face_recognition"]
+    install_requires=["numpy", "dlib", "gevent", "flask", "opencv-python", "face_recognition", "Pillow"]
 )
