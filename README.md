@@ -7,11 +7,11 @@ pip3 install face_recognition_util
 
 ## Tips:
 <br>
-**由于face_recognition模块中人脸比对部分算法问题需要修改  
+由于face_recognition模块中人脸比对部分算法问题需要修改  
 <br>
 在face_recognition目录中找到api.py  
 <br>
-将compare_faces函数替换为以下内容:**
+将compare_faces函数替换为以下内容:
 
 ```
 match_list = list(face_distance(known_face_encodings, face_encoding_to_check))  
