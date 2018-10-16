@@ -7,7 +7,7 @@ SAME_PERSON = "yes"  # 同一个人
 NOT_SAME_PERSON = "no"  # 不是同一个人
 
 
-def get_contrast_faces_result(known_image_code,unknown_image_code):
+def get_contrast_faces_result(known_image_code, unknown_image_code):
     """
     return contrast result
     :param known_image_code:
