@@ -1,4 +1,4 @@
-README
+README.md
 setup.py
 face_recognition_util/FaceUtil.py
 face_recognition_util/__init__.py

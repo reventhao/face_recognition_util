@@ -4,3 +4,4 @@ gevent
 flask
 opencv-python
 face_recognition
+Pillow
