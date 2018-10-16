@@ -18,6 +18,7 @@ def get_contrast_faces_result(known_image_code, unknown_image_code):
     unknown_image = face_recognition_util.convert_to_image(unknown_image_code)
     if isinstance(known_image, str) or isinstance(unknown_image, str):
         result = DECODING_ERROR
+        return result
     else:
         result = face_recognition_util.contrast_faces(known_image, unknown_image)
         if result == "nf":
