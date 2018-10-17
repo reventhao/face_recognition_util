@@ -13,7 +13,7 @@ from setuptools import setup
 
 setup(
     name="face_recognition_util",
-    version="0.1.1",
+    version="0.1.2",
     keywords=("face_recognition_util"),
     description="face recognition tools",
     long_description="Provide Base64 transcoding,Picture zoom,Face comparison,and real-time comparison",
