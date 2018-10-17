@@ -1,10 +1,8 @@
 import face_recognition_util
 
-DECODING_ERROR = "001"  # 转换编码为图片错误
-FACE_NOT_FOUND = "002"  # 没有找到人脸错误
-COMPARE_ERROR = "003"  # 人脸比对错误
-SAME_PERSON = "yes"  # 同一个人
-NOT_SAME_PERSON = "no"  # 不是同一个人
+DECODING_ERROR = "e001"  # 转换编码为图片错误
+FACE_NOT_FOUND = "e002"  # 没有找到人脸错误
+COMPARE_ERROR = "e003"  # 人脸比对错误
 
 
 def get_contrast_faces_result(known_image_code, unknown_image_code):
@@ -25,8 +23,6 @@ def get_contrast_faces_result(known_image_code, unknown_image_code):
             result = FACE_NOT_FOUND
         elif result == "err":
             result = COMPARE_ERROR
-        elif result:
-            result = SAME_PERSON
         else:
-            result = NOT_SAME_PERSON
+            result = str(result[0])
     return result

@@ -50,13 +50,14 @@ def resize_image(image, multiple=1.0):
 
 
 # 获取单个人脸128特征点向量
-def get_face_encoding(face_image):
+def get_face_encoding(face_image, face_locations=None):
     """
     获取人脸特征点向量
     :param face_image: 已知人脸图片:
-    :return face_encoding:人脸特征点向量:
+    :param face_locations: 人脸位置:
+    :return face_encoding: 人脸特征点向量:
     """
-    face_encoding = face_recognition.face_encodings(face_image)[0]
+    face_encoding = face_recognition.face_encodings(face_image, face_locations)
     return face_encoding
 
 
@@ -71,10 +72,10 @@ def contrast_faces(known_image, unknown_image, tolerance=0.4):
     """
     # noinspection PyBroadException
     try:
-        known_image_encoding = face_recognition.face_encodings(resize_image(known_image))[0]
-        unknown_image_encoding = face_recognition.face_encodings(resize_image(unknown_image))[0]
+        known_image_encoding = get_face_encoding(resize_image(known_image))[0]
+        unknown_image_encoding = get_face_encoding(resize_image(unknown_image))[0]
         result = face_recognition.compare_faces([known_image_encoding], unknown_image_encoding, tolerance)
-        return result[0]
+        return result
     except IndexError:
         return "nf"
     except Exception as e:
@@ -106,17 +107,21 @@ def real_time_comparison(known_face_encodings, known_face_names, tolerance=0.4):
 
         if process_this_frame:
             face_locations = face_recognition.face_locations(rgb_small_frame)
-            face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
+            face_encodings = get_face_encoding(rgb_small_frame, face_locations)
 
             face_names = []
             for face_encoding in face_encodings:
                 matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance)
                 name = "Unknown"
-
+                mmax_index = matches.index(max(matches))
+                mmax_value = matches[mmax_index]
+                for index, match in enumerate(matches):
+                    matches[index] = False
+                if mmax_value > (1-tolerance)*100:
+                    matches[mmax_index] = True
                 if True in matches:
                     first_match_index = matches.index(True)
                     name = known_face_names[first_match_index]
-
                 face_names.append(name)
 
         process_this_frame = not process_this_frame
