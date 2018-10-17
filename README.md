@@ -13,16 +13,11 @@ pip3 install face_recognition_util
 将compare_faces函数替换为以下内容:
 
 ```
-match_list = list(face_distance(known_face_encodings, face_encoding_to_check))  
-min_index = match_list.index(min(match_list))  
-
-for (index, value) in enumerate(match_list):  
-    match_list[index] = False  
-
-if match_list[min_index] <= tolerance:  
-    match_list[min_index] = True  
-
-return match_list  
+match_list = list(face_distance(known_face_encodings, face_encoding_to_check))
+for index,value in enumerate(match_list):
+    match_list[index] = 1-match_list[index]
+    match_list[index] *= 100
+return match_list
 ```
 
 ## 部分函数说明:  
